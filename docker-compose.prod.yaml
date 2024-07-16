@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: ./backend/api
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    env_file: .env
+    environment:
+      - GLOBAL_SERVICE=publisher
+
+  consumer:
+    build:
+      context: ./backend/api
+      dockerfile: Dockerfile
+    env_file: .env
+    environment:
+      - GLOBAL_SERVICE=consumer
